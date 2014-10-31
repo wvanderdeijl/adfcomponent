@@ -13,23 +13,12 @@
     </features>
     <extends></extends>
     <style-sheet-name></style-sheet-name>
-    <!--
-    <translation-source>
-    </translation-source>-->
-    <!--
-    <bundle-name>
-    </bundle-name>-->
     <metadata/>
   </skin>
   <skin-addition>
-    <skin-id></skin-id>
+    <skin-id>simple.desktop</skin-id>
     <style-sheet-name></style-sheet-name>
-    <!--
-    <translation-source>
-    </translation-source>-->
-    <!--
-    <bundle-name>
-    </bundle-name>-->
+    <bundle-name>com.redheap.rh.faces.resource.RhSimpleDesktopBundle</bundle-name>
     <features>
       <feature></feature>
     </features>

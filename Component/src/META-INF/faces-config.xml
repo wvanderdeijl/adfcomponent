@@ -2,7 +2,15 @@
 <faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee">
     <application></application>
     <component>
-        <component-type>com.readheap.rh.MultiSelect</component-type>
-        <component-class>com.readheap.rh.faces.component.MultiSelect</component-class>
+        <component-type>com.redheap.rh.componenttype.MultiSelect</component-type>
+        <component-class>com.redheap.rh.faces.component.MultiSelect</component-class>
     </component>
+    <render-kit>
+        <render-kit-id>oracle.adf.rich</render-kit-id>
+        <renderer>
+            <component-family>org.apache.myfaces.trinidad.SelectOrder</component-family>
+            <renderer-type>com.redheap.rh.rendertype.MultiSelect</renderer-type>
+            <renderer-class>com.redheap.rh.faces.render.MultiSelectRenderer</renderer-class>
+        </renderer>
+    </render-kit>
 </faces-config>
