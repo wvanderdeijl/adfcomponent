@@ -1,23 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <skins xmlns="http://myfaces.apache.org/trinidad/skin">
-  <skin>
-    <id></id>
-    <family></family>
-    <version>
-      <name></name>
-      <default></default>
-    </version>
-    <render-kit-id></render-kit-id>
-    <features>
-      <feature></feature>
-    </features>
-    <extends></extends>
-    <style-sheet-name></style-sheet-name>
-    <metadata/>
-  </skin>
   <skin-addition>
     <skin-id>simple.desktop</skin-id>
-    <style-sheet-name></style-sheet-name>
+    <style-sheet-name>rh/styles/rh-simple-desktop.css</style-sheet-name>
     <bundle-name>com.redheap.rh.faces.resource.RhSimpleDesktopBundle</bundle-name>
     <features>
       <feature></feature>
