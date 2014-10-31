@@ -6,8 +6,8 @@
     <tag>
         <tag-name>multiSelect</tag-name>
         <component>
-            <component-type></component-type>
-            <renderer-type></renderer-type>
+            <component-type>com.redheap.rh.componenttype.MultiSelect</component-type>
+            <renderer-type>com.redheap.rh.rendertype.MultiSelect</renderer-type>
             <handler-class>oracle.adfinternal.view.faces.facelets.rich.RichComponentHandler</handler-class>
         </component>
     </tag>
