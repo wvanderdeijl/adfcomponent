@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee">
+    <application></application>
+    <component>
+        <component-type>com.readheap.rh.MultiSelect</component-type>
+        <component-class>com.readheap.rh.faces.component.MultiSelect</component-class>
+    </component>
+</faces-config>
