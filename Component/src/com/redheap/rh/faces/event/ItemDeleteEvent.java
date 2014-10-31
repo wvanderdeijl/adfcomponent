@@ -4,7 +4,12 @@ import javax.faces.component.UIComponent;
 import javax.faces.event.FacesEvent;
 import javax.faces.event.FacesListener;
 
+import oracle.adf.share.logging.ADFLogger;
+
 public class ItemDeleteEvent extends FacesEvent {
+
+    private static final ADFLogger logger = ADFLogger.createADFLogger(ItemDeleteEvent.class);
+
     //FIXME: Placeholder code from the Oracle Example.
 
     /**

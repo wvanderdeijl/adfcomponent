@@ -8,12 +8,14 @@ import javax.el.MethodExpression;
 import javax.faces.event.AbortProcessingException;
 import javax.faces.event.FacesEvent;
 
+import oracle.adf.share.logging.ADFLogger;
+
 import org.apache.myfaces.trinidad.bean.FacesBean;
 import org.apache.myfaces.trinidad.bean.PropertyKey;
-import org.apache.myfaces.trinidad.component.UIXObject;
 import org.apache.myfaces.trinidad.component.UIXSelectOrder;
 
 public class MultiSelect extends UIXSelectOrder {
+
     static public final FacesBean.Type TYPE = new FacesBean.Type(UIXSelectOrder.TYPE);
 
     //Define the properties on the component.
@@ -42,12 +44,16 @@ public class MultiSelect extends UIXSelectOrder {
     static public final PropertyKey ITEM_SELECT_KEY = TYPE.registerKey("itemSelectListener", MethodExpression.class);
     static public final PropertyKey ITEM_DELETE_KEY = TYPE.registerKey("itemDeleteListener", MethodExpression.class);
 
-    public MultiSelect(String string) {
-        super(string);
+    private static final ADFLogger logger = ADFLogger.createADFLogger(MultiSelect.class);
+
+    public MultiSelect(String rendererType) {
+        super(rendererType);
+        logger.fine("created MultiSelect with renderer-type {0}", rendererType);
     }
 
     public MultiSelect() {
         super();
+        logger.fine("created MultiSelect with default renderer-type");
     }
 
     @Override
@@ -62,7 +68,6 @@ public class MultiSelect extends UIXSelectOrder {
 //    public String getInlineStyle() {
 //        return (String) getProperty(INLINE_STYLE_KEY);
 //    }
-
 
     public void setItemSelectListener(MethodExpression input) {
         setProperty(ITEM_SELECT_KEY, input);
@@ -81,26 +86,22 @@ public class MultiSelect extends UIXSelectOrder {
     }
 
     /**
-     * @param facesEvent faces event
+     * @param event faces event
      * @throws AbortProcessingException exception during processing
      */
     @Override
-    public void broadcast(FacesEvent facesEvent) throws AbortProcessingException {
+    public void broadcast(FacesEvent event) throws AbortProcessingException {
+        logger.fine("MultiSelect broadcasting event {0}", event);
         // notify the bound TagSelectListener
-        if (facesEvent instanceof ItemSelectEvent) {
-            ItemSelectEvent event = (ItemSelectEvent) facesEvent;
-            // utility method found in UIXComponentBase for invoking method event
-            // expressions
-            broadcastToMethodExpression(event, getItemSelectListener());
+        if (event instanceof ItemSelectEvent) {
+            // utility method found in UIXComponentBase for invoking method event expressions
+            broadcastToMethodExpression((ItemSelectEvent) event, getItemSelectListener());
         }
-        if (facesEvent instanceof ItemDeleteEvent) {
-            ItemDeleteEvent event = (ItemDeleteEvent) facesEvent;
-            // utility method found in UIXComponentBase for invoking method event
-            // expressions
-            broadcastToMethodExpression(event, getItemDeleteListener());
+        if (event instanceof ItemDeleteEvent) {
+            // utility method found in UIXComponentBase for invoking method event expressions
+            broadcastToMethodExpression((ItemDeleteEvent) event, getItemDeleteListener());
         }
-
-        super.broadcast(facesEvent);
+        super.broadcast(event);
     }
 
 }
