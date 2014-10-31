@@ -2,13 +2,13 @@
 <!DOCTYPE facelet-taglib
           PUBLIC "-//Sun Microsystems, Inc.//DTD Facelet Taglib 1.0//EN" "http://java.sun.com/dtd/facelet-taglib_1_0.dtd">
 <facelet-taglib xmlns="http://java.sun.com/JSF/Facelet">
- 
-  <namespace>http://www.redheap.com/rh</namespace>
- 
+    <namespace>http://www.redheap.com/rh</namespace>
     <tag>
-      <tag-name>multiSelect</tag-name>
-      <handler-class>
-        oracle.adfinternal.view.faces.facelets.rich.RichComponentHandler
-      </handler-class>
+        <tag-name>multiSelect</tag-name>
+        <component>
+            <component-type></component-type>
+            <renderer-type></renderer-type>
+            <handler-class>oracle.adfinternal.view.faces.facelets.rich.RichComponentHandler</handler-class>
+        </component>
     </tag>
 </facelet-taglib>
