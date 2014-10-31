@@ -33,6 +33,10 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>resources</servlet-name>
+    <url-pattern>/rh/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>resources</servlet-name>
     <url-pattern>/afr/*</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
@@ -44,7 +48,7 @@
     <url-pattern>/servlet/GaugeServlet/*</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>MapProxyServlet</servlet-name>
+    <servlet-name>resources</servlet-name>
     <url-pattern>/mapproxy/*</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
