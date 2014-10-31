@@ -119,6 +119,7 @@
          <string v=".xsl"/>
          <string v=".css"/>
          <string v=".js"/>
+         <string v=".resources"/>
       </list>
       <value n="internalEncoding" v="UTF-8"/>
       <value n="webIANAEncoding" v="UTF-8"/>
