@@ -1,5 +1,7 @@
 package com.redheap.rh.faces.render;
 
+import com.redheap.rh.faces.component.MultiSelect;
+
 import java.io.IOException;
 
 import javax.faces.component.UIComponent;
@@ -14,6 +16,10 @@ import org.apache.myfaces.trinidad.bean.FacesBean;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
 public class MultiSelectRenderer extends RichRenderer {
+    public MultiSelectRenderer() {
+        this(MultiSelect.TYPE);
+    }
+    
     public MultiSelectRenderer(FacesBean.Type type) {
         super(type);
     }
