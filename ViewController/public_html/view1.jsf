@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:rh="http://www.redheap.com/rh">
+    <af:document title="view1.jsf" id="d1">
+        <af:form id="f1">
+            <rh:multiSelect/>
+        </af:form>
+    </af:document>
+</f:view>
