@@ -1,78 +1,73 @@
-////FIXME: PlaceHolder JS from Oracle Example.
-//
+function RhItemSelectEvent(source, item) {
+  AdfAssert.assertPrototype(source, RhMultiSelect);
+  AdfAssert.assertString(item);
+  this.Init(source, item);
+}
+
+// make RhItemSelectEvent a subclass of AdfComponentEvent
+AdfObject.createSubclass(RhItemSelectEvent, AdfComponentEvent);
+
 ///**
-// * Fires a select type event to the server for the source component 
-//* when a tag is clicked. 
+// * The event type
 //*/
-//function AcmeTagSelectEvent(source, tag)
-//{
-// AdfAssert.assertPrototype(source, AdfUIComponent);
-// AdfAssert.assertString(tag); this.Init(source, tag);
-//}
-//// make AcmeTagSelectEvent a subclass of AdfComponentEvent
-//
-//AdfObject.createSubclass(AcmeTagSelectEvent, AdfComponentEvent);
+RhItemSelectEvent.SELECT_EVENT_TYPE = "itemSelect";
+
 ///**
-// * The event type 
+// * Event Object constructor
 //*/
-//AcmeTagSelectEvent.SELECT_EVENT_TYPE = "tagSelect";
+RhItemSelectEvent.prototype.Init = function(source, item) {
+  AdfAssert.assertPrototype(source, RhMultiSelect);
+  AdfAssert.assertString(item);
+  this._item = item;
+  // call super.init()
+  RhItemSelectEvent.superclass.Init.call(this, source, RhItemSelectEvent.SELECT_EVENT_TYPE);
+}
+
 ///**
-// * Event Object constructor 
+// * Indicates this event should be sent to the server (default from superclass is false)
 //*/
-//AcmeTagSelectEvent.prototype.Init = function(source, tag)
-//{
-//  AdfAssert.assertPrototype(source, AdfUIComponent);
-//  AdfAssert.assertString(tag);
-//  this._tag = tag;
-// AcmeTagSelectEvent.superclass.Init.call(this, source, AcmeTagSelectEvent.SELECT_EVENT_TYPE);}
+RhItemSelectEvent.prototype.propagatesToServer = function() {
+  return true;
+}
+
 ///**
-// * Indicates this event should be sent to the server 
+// * Override of AddMarshalledProperties to add parameters * sent server side.
 //*/
-//AcmeTagSelectEvent.prototype.propagatesToServer = function()
-//{ 
-//  return true;
-//}
+RhItemSelectEvent.prototype.AddMarshalledProperties = function(properties) {
+  properties.item = this._item;
+}
+
 ///**
-// * Override of AddMarshalledProperties to add parameters * sent server side. 
-//*/
-//AcmeTagSelectEvent.prototype.AddMarshalledProperties = function( properties) 
-//{ 
-//  properties.tag = this._tag;
-//
-//
-// }
-///**
-// * Convenient method for queue a AcmeTagSelectEvent.
+// * Convenient method for queue a RhItemSelectEvent.
 // */
-//AcmeTagSelectEvent.queue = function(component, tag)
-//{  
-//AdfAssert.assertPrototype(component, AdfUIComponent);
-// AdfAssert.assertString(tag);
-// AdfLogger.LOGGER.logMessage(AdfLogger.FINEST,     "AcmeTagSelectEvent.queue(component, tag)");
-// new AcmeTagSelectEvent(component, tag).queue(true);
-//}
+RhItemSelectEvent.queue = function(component, item) {
+  AdfAssert.assertPrototype(component, RhMultiSelect);
+  AdfAssert.assertString(item);
+  AdfLogger.LOGGER.logMessage(AdfLogger.FINEST, "RhItemSelectEvent.queue(component, item)");
+  new RhItemSelectEvent(component, item).queue(/* isPartial=*/true);
+}
+
 ///**
-// * returns the selected file type 
+// * returns the selected file type
 //*/
-//AcmeTagSelectEvent.prototype.getTag = function()
-//{
-//  return this._tag;}
+RhItemSelectEvent.prototype.getItem = function() {
+  return this._item;
+}
+
 ///**
-// * returns a debug string 
+// * returns a debug string
 //*/
-//AcmeTagSelectEvent.prototype.toDebugString = function()
-//{ 
-// var superString = AcmeTagSelectEvent.superclass.toDebugString.call(this);
-// return superString.substring(0, superString.length - 1)
-//  +     ", tag=" 
-//  + this._tag     + "]";
-//}
+RhItemSelectEvent.prototype.toDebugString = function()
+{
+  var superString = RhItemSelectEvent.superclass.toDebugString.call(this);
+  return superString.substring(0, superString.length-1) + ", item=" + this._item + "]";
+}
+
 ///*
 //*
-//* Make sure that this event only invokes immediate validators 
-//* on the client. 
+//* Make sure that this event only invokes immediate validators
+//* on the client.
 //*/
-//AcmeTagSelectEvent.prototype.isImmediate = function()
-//{ 
-//  return true;
-//}
+RhItemSelectEvent.prototype.isImmediate = function() {
+  return true;
+}

@@ -13,9 +13,9 @@ public class ItemSelectEvent extends FacesEvent {
     //FIXME: Placeholder code from the Oracle Example.
 
     /**
-     * <p>Tag selected on the client.</p>
+     * <p>Item selected on the client.</p>
      */
-    private String tag = null;
+    private String item = null;
 
     /**
      * <p>Overloade constructor passing the <code>source</code>
@@ -25,9 +25,9 @@ public class ItemSelectEvent extends FacesEvent {
      * @param source component firing the event
      * @param tag selected tag link type
      */
-    public ItemSelectEvent(UIComponent source, String tag) {
+    public ItemSelectEvent(UIComponent source, String item) {
         super(source);
-        this.tag = tag;
+        this.item = item;
     }
 
     /**
@@ -56,7 +56,8 @@ public class ItemSelectEvent extends FacesEvent {
     /**
      * @return the tag that was selected triggering this event
      */
-    public String getTag() {
-        return tag;
+    public String getItem() {
+        return item;
     }
+
 }

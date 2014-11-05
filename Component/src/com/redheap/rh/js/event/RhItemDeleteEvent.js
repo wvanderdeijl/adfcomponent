@@ -1,78 +1,73 @@
-////FIXME: PlaceHolder JS from Oracle Example.
-//
+function RhItemDeleteEvent(source, item) {
+  AdfAssert.assertPrototype(source, RhMultiSelect);
+  AdfAssert.assertString(item);
+  this.Init(source, item);
+}
+
+// make RhItemDeleteEventa subclass of AdfComponentEvent
+AdfObject.createSubclass(RhItemDeleteEvent, AdfComponentEvent);
+
 ///**
-// * Fires a select type event to the server for the source component 
-//* when a tag is clicked. 
+// * The event type
 //*/
-//function AcmeTagSelectEvent(source, tag)
-//{
-// AdfAssert.assertPrototype(source, AdfUIComponent);
-// AdfAssert.assertString(tag); this.Init(source, tag);
-//}
-//// make AcmeTagSelectEvent a subclass of AdfComponentEvent
-//
-//AdfObject.createSubclass(AcmeTagSelectEvent, AdfComponentEvent);
+RhItemDeleteEvent.DELETE_EVENT_TYPE = "itemDelete";
+
 ///**
-// * The event type 
+// * Event Object constructor
 //*/
-//AcmeTagSelectEvent.SELECT_EVENT_TYPE = "tagSelect";
+RhItemDeleteEvent.prototype.Init = function(source, item) {
+  AdfAssert.assertPrototype(source, RhMultiSelect);
+  AdfAssert.assertString(item);
+  this._item = item;
+  // call super.init()
+  RhItemDeleteEvent.superclass.Init.call(this, source, RhItemDeleteEvent.DELETE_EVENT_TYPE);
+}
+
 ///**
-// * Event Object constructor 
+// * Indicates this event should be sent to the server (default from superclass is false)
 //*/
-//AcmeTagSelectEvent.prototype.Init = function(source, tag)
-//{
-//  AdfAssert.assertPrototype(source, AdfUIComponent);
-//  AdfAssert.assertString(tag);
-//  this._tag = tag;
-// AcmeTagSelectEvent.superclass.Init.call(this, source, AcmeTagSelectEvent.SELECT_EVENT_TYPE);}
-///**
-// * Indicates this event should be sent to the server 
-//*/
-//AcmeTagSelectEvent.prototype.propagatesToServer = function()
-//{ 
+//RhItemDeleteEvent.prototype.propagatesToServer = function() {
 //  return true;
 //}
+
 ///**
-// * Override of AddMarshalledProperties to add parameters * sent server side. 
+// * Override of AddMarshalledProperties to add parameters * sent server side.
 //*/
-//AcmeTagSelectEvent.prototype.AddMarshalledProperties = function( properties) 
-//{ 
-//  properties.tag = this._tag;
-//
-//
-// }
+RhItemDeleteEvent.prototype.AddMarshalledProperties = function(properties) {
+  properties.item = this._item;
+}
+
 ///**
-// * Convenient method for queue a AcmeTagSelectEvent.
+// * Convenient method for queue a RhItemDeleteEvent.
 // */
-//AcmeTagSelectEvent.queue = function(component, tag)
-//{  
-//AdfAssert.assertPrototype(component, AdfUIComponent);
-// AdfAssert.assertString(tag);
-// AdfLogger.LOGGER.logMessage(AdfLogger.FINEST,     "AcmeTagSelectEvent.queue(component, tag)");
-// new AcmeTagSelectEvent(component, tag).queue(true);
-//}
+RhItemDeleteEvent.queue = function(component, item) {
+  AdfAssert.assertPrototype(component, RhMultiSelect);
+  AdfAssert.assertString(item);
+  AdfLogger.LOGGER.logMessage(AdfLogger.FINEST, "RhItemDeleteEvent.queue(component, item)");
+  new RhItemDeleteEvent(component, item).queue(/* isPartial=*/true);
+}
+
 ///**
-// * returns the selected file type 
+// * returns the selected file type
 //*/
-//AcmeTagSelectEvent.prototype.getTag = function()
-//{
-//  return this._tag;}
+RhItemDeleteEvent.prototype.getItem = function() {
+  return this._item;
+}
+
 ///**
-// * returns a debug string 
+// * returns a debug string
 //*/
-//AcmeTagSelectEvent.prototype.toDebugString = function()
-//{ 
-// var superString = AcmeTagSelectEvent.superclass.toDebugString.call(this);
-// return superString.substring(0, superString.length - 1)
-//  +     ", tag=" 
-//  + this._tag     + "]";
-//}
+RhItemDeleteEvent.prototype.toDebugString = function()
+{
+  var superString = RhItemDeleteEvent.superclass.toDebugString.call(this);
+  return superString.substring(0, superString.length-1) + ", item=" + this._item + "]";
+}
+
 ///*
 //*
-//* Make sure that this event only invokes immediate validators 
-//* on the client. 
+//* Make sure that this event only invokes immediate validators
+//* on the client.
 //*/
-//AcmeTagSelectEvent.prototype.isImmediate = function()
-//{ 
-//  return true;
-//}
+RhItemDeleteEvent.prototype.isImmediate = function() {
+  return true;
+}
