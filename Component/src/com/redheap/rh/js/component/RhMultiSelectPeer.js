@@ -27,10 +27,11 @@ RhMultiSelectPeer.prototype.HandleComponentClick = function(componentEvent) {
       AdfLogger.LOGGER.logMessage(AdfLogger.FINEST, "tag :" + item);
       // fire a delete event
       RhItemDeleteEvent.queue(component, item);
+      RhItemSelectEvent.queue(component, item); // TODO: delete and select should probably have different triggers ;-)
       //cancel the native dom onclick to prevent browser actions based on the
       //'#' hyperlink. The event is of type AdfIEUIInputEvent. This event
       //will cancel the native dom event by calling AdfAgent.AGENT.preventDefault(Event)
-      componentEvent.cancel();
+      //componentEvent.cancel();
     }
   }
 }
