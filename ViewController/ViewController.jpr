@@ -466,7 +466,6 @@
                <value n="version" v="2.0"/>
             </hash>
             <value n="name" v="Rh"/>
-            <value n="runInEditor" v="true"/>
             <value n="taglibURL" v="jar:file:/X:/adfcomponent/Component/deploy/adf-multiselect-redheap.jar!/META-INF/rh.taglib.xml"/>
             <value n="URI" v="http://www.redheap.com/rh"/>
             <value n="version" v="2.0"/>
