@@ -12,5 +12,6 @@
         <feature-class>com/redheap/rh/js/component/RhMultiSelectPeer.js</feature-class>
         <feature-class>com/redheap/rh/js/event/RhItemSelectEvent.js</feature-class>
         <feature-class>com/redheap/rh/js/event/RhItemDeleteEvent.js</feature-class>
+        <feature-dependency>AdfUISelectOrder</feature-dependency>
     </feature>
 </features>
