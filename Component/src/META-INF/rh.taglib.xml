@@ -14,5 +14,13 @@
             <name>styleClass</name>
             <type>java.lang.String</type>
         </attribute>
+        <attribute>
+            <name>id</name>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <name>value</name>
+            <type>java.util.List</type>
+        </attribute>
     </tag>
 </facelet-taglib>

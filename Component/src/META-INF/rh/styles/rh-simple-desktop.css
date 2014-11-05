@@ -1,6 +1,5 @@
 rh|multiSelect{
     display: inline-block;
-    border: 1px solid red;
 }
 
 rh|multiSelect::content {

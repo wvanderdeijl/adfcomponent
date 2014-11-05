@@ -11,4 +11,9 @@
     <managed-bean-class>com.redheap.adfcomp.view.SelectionBean</managed-bean-class>
     <managed-bean-scope>backingBean</managed-bean-scope>
   </managed-bean>
+  <managed-bean id="__2">
+    <managed-bean-name>itemSupportBean</managed-bean-name>
+    <managed-bean-class>com.redheap.adfcomp.view.support.ItemSupportBean</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+  </managed-bean>
 </adfc-config>
