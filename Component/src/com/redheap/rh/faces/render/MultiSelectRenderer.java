@@ -4,6 +4,8 @@ import com.redheap.rh.faces.component.MultiSelect;
 
 import java.io.IOException;
 
+import java.util.List;
+
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
@@ -14,9 +16,12 @@ import oracle.adf.view.rich.render.ClientMetadata;
 import oracle.adf.view.rich.render.RichRenderer;
 
 import org.apache.myfaces.trinidad.bean.FacesBean;
+import org.apache.myfaces.trinidad.bean.PropertyKey;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
 public class MultiSelectRenderer extends RichRenderer {
+    private PropertyKey    _value;
+    
     public MultiSelectRenderer() {
         this(MultiSelect.TYPE);
     }
@@ -37,12 +42,14 @@ public class MultiSelectRenderer extends RichRenderer {
         rw.startElement("ul", null);
         RichRenderer.renderStyleClass(facesContext, renderingContext, "rh|multiSelect::content");
 
-        for (int i = 1; i <= 3; i++) {
-            String title = "Salary between " + i*10 + " and " +i*100;
+        List<String> value = (List<String>) facesBean.getProperty(_value);
+        for (int i = 0; i < value.size(); i++) {
+            String title = value.get(i);
             
             rw.startElement("li", null);
             RichRenderer.renderStyleClass(facesContext, renderingContext, "rh|multiSelect::item");
             rw.writeAttribute("title", title, null);
+            rw.writeAttribute("rh-li", i, null);
             rw.startElement("button", null);
             RichRenderer.renderStyleClass(facesContext, renderingContext, "rh|multiSelect::item-content");
             rw.writeAttribute("type", "button", null);
@@ -80,7 +87,7 @@ public class MultiSelectRenderer extends RichRenderer {
 
     @Override
     protected void findTypeConstants(FacesBean.Type type, ClientMetadata metadata) {
-        // TODO Implement this method
+        _value = type.findKey("value");
         super.findTypeConstants(type, metadata);
     }
 }

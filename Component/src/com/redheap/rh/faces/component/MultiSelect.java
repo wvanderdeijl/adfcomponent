@@ -3,6 +3,8 @@ package com.redheap.rh.faces.component;
 import com.redheap.rh.faces.event.ItemDeleteEvent;
 import com.redheap.rh.faces.event.ItemSelectEvent;
 
+import java.util.List;
+
 import javax.el.MethodExpression;
 
 import javax.faces.event.AbortProcessingException;
@@ -28,7 +30,7 @@ public class MultiSelect extends UIXSelectOrder {
     static public final PropertyKey CLIENT_ATTRIBUTE_KEY = TYPE.registerKey("clientAttributesKey", String.class);
     static public final PropertyKey CLIENT_LISTENER_KEY = TYPE.registerKey("clientListenersKey", String.class);
     static public final PropertyKey UNSECURE_KEY = TYPE.registerKey("unsecureKey", String.class);
-
+    
     //Define the properties on the component.
     //    static public final PropertyKey AUTO_SUBMIT_KEY = TYPE.registerKey("autoSubmit", String.class);
     //    static public final PropertyKey ATTR_CHANGE_LIST_KEY = TYPE.registerKey("attributeChangeListener ", String.class);
