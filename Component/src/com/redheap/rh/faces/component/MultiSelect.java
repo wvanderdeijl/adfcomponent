@@ -18,29 +18,34 @@ public class MultiSelect extends UIXSelectOrder {
 
     static public final FacesBean.Type TYPE = new FacesBean.Type(UIXSelectOrder.TYPE);
 
-    //Define the properties on the component.
-//    static public final PropertyKey INLINE_STYLE_KEY = TYPE.registerKey("inlineStyle", String.class);
+    //Required properties by the RichRenderer.    
+    static public final PropertyKey INLINE_STYLE_KEY = TYPE.registerKey("inlineStyle", String.class);
     static public final PropertyKey STYLE_CLASS_KEY = TYPE.registerKey("styleClass", String.class);
-//    static public final PropertyKey AUTO_SUBMIT_KEY = TYPE.registerKey("autoSubmit", String.class);
-//    static public final PropertyKey ATTR_CHANGE_LIST_KEY = TYPE.registerKey("attributeChangeListener ", String.class);
-//    static public final PropertyKey BINDING_KEY = TYPE.registerKey("binding", String.class);
-//    static public final PropertyKey LABEL_KEY = TYPE.registerKey("label", String.class);
-//    static public final PropertyKey LABEL_ACCESS_KEY = TYPE.registerKey("labelAndAccessKey", String.class);
-//    static public final PropertyKey LABEL_STYLE_KEY = TYPE.registerKey("labelStyle", String.class);
-//    static public final PropertyKey PARTIAL_TRIGGERS_KEY = TYPE.registerKey("partialTriggers", String.class);
-//    static public final PropertyKey READ_ONLY_KEY = TYPE.registerKey("readOnly", String.class);
-//    static public final PropertyKey REQUIRED_KEY = TYPE.registerKey("required", String.class);
-//    static public final PropertyKey RENDERED_KEY = TYPE.registerKey("rendered", String.class);
-//    static public final PropertyKey CHANGED_KEY = TYPE.registerKey("changed", String.class);
-//    static public final PropertyKey CHANGED_DESC_KEY = TYPE.registerKey("changedDesc", String.class);
-//    static public final PropertyKey CLIENT_COMPONENT_KEY = TYPE.registerKey("clientComponent", String.class);
-//    static public final PropertyKey CONTENT_STYLE_KEY = TYPE.registerKey("contentStyle", String.class);
-//    static public final PropertyKey CONVERTER_KEY = TYPE.registerKey("converter", String.class);
-//    static public final PropertyKey DISABLED_KEY = TYPE.registerKey("disabled", String.class);
-//    static public final PropertyKey SHORT_DESC_KEY = TYPE.registerKey("shortDesc", String.class);
-//    static public final PropertyKey VALIDATOR_KEY = TYPE.registerKey("validator", String.class);
-//    static public final PropertyKey VAL_CHANGE_LIST_KEY = TYPE.registerKey("valueChangeListener", String.class);
-//    static public final PropertyKey VISIBLE_KEY = TYPE.registerKey("visible", String.class);
+    static public final PropertyKey SHORT_DESC_KEY = TYPE.registerKey("shortDesc", String.class);
+    static public final PropertyKey PARTIAL_TRIGGERS_KEY = TYPE.registerKey("partialTriggers", String.class);
+    static public final PropertyKey VISIBLE_KEY = TYPE.registerKey("visible", Boolean.class, Boolean.TRUE);
+    static public final PropertyKey CLIENT_COMPONENT_KEY = TYPE.registerKey("clientComponent", String.class);
+    static public final PropertyKey CLIENT_ATTRIBUTE_KEY = TYPE.registerKey("clientAttributesKey", String.class);
+    static public final PropertyKey CLIENT_LISTENER_KEY = TYPE.registerKey("clientListenersKey", String.class);
+    static public final PropertyKey UNSECURE_KEY = TYPE.registerKey("unsecureKey", String.class);
+
+    //Define the properties on the component.
+    //    static public final PropertyKey AUTO_SUBMIT_KEY = TYPE.registerKey("autoSubmit", String.class);
+    //    static public final PropertyKey ATTR_CHANGE_LIST_KEY = TYPE.registerKey("attributeChangeListener ", String.class);
+    //    static public final PropertyKey BINDING_KEY = TYPE.registerKey("binding", String.class);
+    //    static public final PropertyKey LABEL_KEY = TYPE.registerKey("label", String.class);
+    //    static public final PropertyKey LABEL_ACCESS_KEY = TYPE.registerKey("labelAndAccessKey", String.class);
+    //    static public final PropertyKey LABEL_STYLE_KEY = TYPE.registerKey("labelStyle", String.class);
+    //    static public final PropertyKey READ_ONLY_KEY = TYPE.registerKey("readOnly", String.class);
+    //    static public final PropertyKey REQUIRED_KEY = TYPE.registerKey("required", String.class);
+    //    static public final PropertyKey RENDERED_KEY = TYPE.registerKey("rendered", String.class);
+    //    static public final PropertyKey CHANGED_KEY = TYPE.registerKey("changed", String.class);
+    //    static public final PropertyKey CHANGED_DESC_KEY = TYPE.registerKey("changedDesc", String.class);
+    //    static public final PropertyKey CONTENT_STYLE_KEY = TYPE.registerKey("contentStyle", String.class);
+    //    static public final PropertyKey CONVERTER_KEY = TYPE.registerKey("converter", String.class);
+    //    static public final PropertyKey DISABLED_KEY = TYPE.registerKey("disabled", String.class);
+    //    static public final PropertyKey VALIDATOR_KEY = TYPE.registerKey("validator", String.class);
+    //    static public final PropertyKey VAL_CHANGE_LIST_KEY = TYPE.registerKey("valueChangeListener", String.class);
     static public final PropertyKey ITEM_SELECT_KEY = TYPE.registerKey("itemSelectListener", MethodExpression.class);
     static public final PropertyKey ITEM_DELETE_KEY = TYPE.registerKey("itemDeleteListener", MethodExpression.class);
 
@@ -59,22 +64,6 @@ public class MultiSelect extends UIXSelectOrder {
     @Override
     protected FacesBean.Type getBeanType() {
         return TYPE;
-    }
-
-//    public void setInlineStyle(String input) {
-//        setProperty(INLINE_STYLE_KEY, input);
-//    }
-//
-//    public String getInlineStyle() {
-//        return (String) getProperty(INLINE_STYLE_KEY);
-//    }
-
-    public void setStyleClass(String input) {
-        setProperty(STYLE_CLASS_KEY, input);
-    }
-
-    public String getStyleClass() {
-        return (String) getProperty(STYLE_CLASS_KEY);
     }
 
     public void setItemSelectListener(MethodExpression input) {
@@ -111,7 +100,4 @@ public class MultiSelect extends UIXSelectOrder {
         }
         super.broadcast(event);
     }
-    
-    
-
 }

@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
 import oracle.adf.view.rich.render.ClientComponent;
+import oracle.adf.view.rich.render.ClientMetadata;
 import oracle.adf.view.rich.render.RichRenderer;
 
 import org.apache.myfaces.trinidad.bean.FacesBean;
@@ -28,19 +29,19 @@ public class MultiSelectRenderer extends RichRenderer {
     protected void encodeAll(FacesContext facesContext, RenderingContext renderingContext, UIComponent component,
                              ClientComponent clientComponent, FacesBean facesBean) throws IOException {
         //SelectManyChoiceRenderer
-        MultiSelect multiSelect = (MultiSelect) component;
         ResponseWriter rw = facesContext.getResponseWriter();
-        rw.startElement("div", multiSelect); //rootElement so add to the multiSelect.
-        rw.writeAttribute("class", renderingContext.getStyleClass("rh|multiSelect") + " " + multiSelect.getStyleClass(),
-                          "styleClass");
-        rw.writeAttribute("id", multiSelect.getClientId(facesContext), "id");
+        rw.startElement("div", component); //rootElement so add to the multiSelect UIComponent.
+        
+        renderId(facesContext, component, clientComponent);
+        renderAllRootAttributes(facesContext, renderingContext, clientComponent, facesBean);
+        
         rw.startElement("ul", null);
-        rw.writeAttribute("class", renderingContext.getStyleClass("rh|multiSelect::content"), null);
+        RichRenderer.renderStyleClass(facesContext, renderingContext, "rh|multiSelect::content");
         rw.startElement("li", null);
-        rw.writeAttribute("class", renderingContext.getStyleClass("rh|multiSelect::item"), null);
+        RichRenderer.renderStyleClass(facesContext, renderingContext, "rh|multiSelect::item");
         rw.writeAttribute("title", "Salary between 10 and 100", null);
         rw.startElement("button", null);
-        rw.writeAttribute("class", renderingContext.getStyleClass("rh|multiSelect::item-content"), null);
+        RichRenderer.renderStyleClass(facesContext, renderingContext, "rh|multiSelect::item-content");
         rw.writeAttribute("type", "button", null);
         rw.writeAttribute("tabindex", "-1", null);
         rw.startElement("span", null);        
@@ -49,7 +50,7 @@ public class MultiSelectRenderer extends RichRenderer {
         rw.endElement("button");
         rw.startElement("span", null);
         rw.writeAttribute("title", "Remove", null);
-        rw.writeAttribute("class", renderingContext.getStyleClass("rh|multiSelect::item-delete"), null);
+        RichRenderer.renderStyleClass(facesContext, renderingContext, "rh|multiSelect::item-delete");
         rw.endElement("span");
         rw.endElement("li");
         rw.endElement("ul");
@@ -57,7 +58,24 @@ public class MultiSelectRenderer extends RichRenderer {
     }
 
     @Override
+    protected String getDefaultStyleClass(FacesContext context, RenderingContext arc, FacesBean bean) {        
+        return "rh|multiSelect";
+    }
+
+    @Override
     protected String getClientConstructor() {
         return "RhMultiSelect";
+    }
+
+    @Override
+    public void decodeInternal(FacesContext context, UIComponent component, String clientId) {
+        // TODO Implement this method
+        super.decodeInternal(context, component, clientId);
+    }
+
+    @Override
+    protected void findTypeConstants(FacesBean.Type type, ClientMetadata metadata) {
+        // TODO Implement this method
+        super.findTypeConstants(type, metadata);
     }
 }
