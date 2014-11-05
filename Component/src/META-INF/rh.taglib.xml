@@ -25,6 +25,7 @@
         <attribute>
             <name>itemSelectListener</name>
             <type>javax.el.MethodExpression</type>
+            <method-signature>void processItemSelect(com.redheap.rh.faces.event.ItemSelectEvent)</method-signature>
         </attribute>
     </tag>
 </facelet-taglib>
