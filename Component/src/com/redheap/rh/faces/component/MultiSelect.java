@@ -1,6 +1,5 @@
 package com.redheap.rh.faces.component;
 
-import com.redheap.rh.faces.event.ItemDeleteEvent;
 import com.redheap.rh.faces.event.ItemSelectEvent;
 
 import java.util.List;
@@ -31,6 +30,8 @@ public class MultiSelect extends UIXSelectOrder {
     static public final PropertyKey CLIENT_LISTENER_KEY = TYPE.registerKey("clientListenersKey", String.class);
     static public final PropertyKey UNSECURE_KEY = TYPE.registerKey("unsecureKey", String.class);
     
+    
+    static public final PropertyKey ITEM_SELECT_KEY = TYPE.registerKey("itemSelectListener", MethodExpression.class);
     //Define the properties on the component.
     //    static public final PropertyKey AUTO_SUBMIT_KEY = TYPE.registerKey("autoSubmit", String.class);
     //    static public final PropertyKey ATTR_CHANGE_LIST_KEY = TYPE.registerKey("attributeChangeListener ", String.class);
@@ -47,9 +48,7 @@ public class MultiSelect extends UIXSelectOrder {
     //    static public final PropertyKey CONVERTER_KEY = TYPE.registerKey("converter", String.class);
     //    static public final PropertyKey DISABLED_KEY = TYPE.registerKey("disabled", String.class);
     //    static public final PropertyKey VALIDATOR_KEY = TYPE.registerKey("validator", String.class);
-    //    static public final PropertyKey VAL_CHANGE_LIST_KEY = TYPE.registerKey("valueChangeListener", String.class);
-    static public final PropertyKey ITEM_SELECT_KEY = TYPE.registerKey("itemSelectListener", MethodExpression.class);
-    static public final PropertyKey ITEM_DELETE_KEY = TYPE.registerKey("itemDeleteListener", MethodExpression.class);
+    //    static public final PropertyKey VAL_CHANGE_LIST_KEY = TYPE.registerKey("valueChangeListener", String.class);    
 
     private static final ADFLogger logger = ADFLogger.createADFLogger(MultiSelect.class);
 
@@ -73,15 +72,7 @@ public class MultiSelect extends UIXSelectOrder {
     }
 
     public MethodExpression getItemSelectListener() {
-        return (MethodExpression) getProperty(ITEM_SELECT_KEY);
-    }
-
-    public void setItemDeleteListener(MethodExpression input) {
-        setProperty(ITEM_DELETE_KEY, input);
-    }
-
-    public MethodExpression getItemDeleteListener() {
-        return (MethodExpression) getProperty(ITEM_DELETE_KEY);
+        return (MethodExpression) getProperty(ITEM_SELECT_KEY);        
     }
 
     /**
@@ -96,10 +87,7 @@ public class MultiSelect extends UIXSelectOrder {
             // utility method found in UIXComponentBase for invoking method event expressions
             broadcastToMethodExpression((ItemSelectEvent) event, getItemSelectListener());
         }
-        if (event instanceof ItemDeleteEvent) {
-            // utility method found in UIXComponentBase for invoking method event expressions
-            broadcastToMethodExpression((ItemDeleteEvent) event, getItemDeleteListener());
-        }
+        
         super.broadcast(event);
     }
 }

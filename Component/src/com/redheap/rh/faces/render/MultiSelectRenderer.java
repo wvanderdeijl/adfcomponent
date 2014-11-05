@@ -2,9 +2,13 @@ package com.redheap.rh.faces.render;
 
 import com.redheap.rh.faces.component.MultiSelect;
 
+import com.redheap.rh.faces.event.ItemSelectEvent;
+
 import java.io.IOException;
 
 import java.util.List;
+
+import java.util.Map;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -12,6 +16,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
 import oracle.adf.view.rich.render.ClientComponent;
+import oracle.adf.view.rich.render.ClientEvent;
 import oracle.adf.view.rich.render.ClientMetadata;
 import oracle.adf.view.rich.render.RichRenderer;
 
@@ -80,9 +85,18 @@ public class MultiSelectRenderer extends RichRenderer {
     }
 
     @Override
-    public void decodeInternal(FacesContext context, UIComponent component, String clientId) {
-        // TODO Implement this method
-        super.decodeInternal(context, component, clientId);
+    public void decodeInternal(FacesContext context, UIComponent component, String clientId) {        
+        ClientEvent event = getClientEvent(context, clientId, "itemSelect");
+
+        if (event != null)
+        {
+            Map<String, Object> params = event.getParameters();
+            Object item = params.get("item");
+            
+            if(item != null) {
+                new ItemSelectEvent(component, item.toString()).queue();
+            }
+        }
     }
 
     @Override
