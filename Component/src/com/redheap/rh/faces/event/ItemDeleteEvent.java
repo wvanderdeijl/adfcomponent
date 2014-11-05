@@ -6,6 +6,7 @@ import javax.faces.event.FacesListener;
 
 import oracle.adf.share.logging.ADFLogger;
 
+@Deprecated
 public class ItemDeleteEvent extends FacesEvent {
 
     private static final ADFLogger logger = ADFLogger.createADFLogger(ItemDeleteEvent.class);

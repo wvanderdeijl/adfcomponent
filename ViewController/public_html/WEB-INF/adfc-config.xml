@@ -6,4 +6,9 @@
   <view id="view1">
     <page>/view1.jsf</page>
   </view>
+  <managed-bean id="__1">
+    <managed-bean-name>selectionBean</managed-bean-name>
+    <managed-bean-class>com.redheap.adfcomp.view.SelectionBean</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+  </managed-bean>
 </adfc-config>

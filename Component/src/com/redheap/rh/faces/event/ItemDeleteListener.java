@@ -3,6 +3,7 @@ package com.redheap.rh.faces.event;
 import javax.faces.event.AbortProcessingException;
 import javax.faces.event.FacesListener;
 
+@Deprecated
 public interface ItemDeleteListener extends FacesListener {
 
     //FIXME: PlaceHolder code from the Oracle Example.

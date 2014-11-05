@@ -238,11 +238,7 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="ADF Library"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <url n="id" protocol="file" path="/C:/oracle/JDevHome/system12.1.3.0.41.140521.1008/o.jdeveloper/adf-multiselect-redheap.jar.library"/>
+            <value n="id" v="adf-multiselect-redheap.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>
@@ -253,8 +249,8 @@
                   <url path="../Component/deploy/adf-multiselect-redheap.jar" jar-entry=""/>
                </list>
                <value n="deployedByDefault" v="true"/>
-               <value n="description" v="ADF Library"/>
-               <value n="id" v="ADF Library"/>
+               <value n="description" v="adf-multiselect-redheap.jar"/>
+               <value n="id" v="adf-multiselect-redheap.jar"/>
             </hash>
          </list>
       </hash>
@@ -336,11 +332,7 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="ADF Library"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <url n="id" protocol="file" path="/C:/oracle/JDevHome/system12.1.3.0.41.140521.1008/o.jdeveloper/adf-multiselect-redheap.jar.library"/>
+            <value n="id" v="adf-multiselect-redheap.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>
@@ -461,13 +453,24 @@
             <value n="version" v="1.1"/>
          </hash>
          <hash>
-            <hash n="baseLibrary">
-               <value n="name" v="Rh"/>
-               <value n="version" v="2.0"/>
-            </hash>
+            <value n="libraries" v="adf-multiselect-redheap.jar"/>
             <value n="name" v="Rh"/>
+            <value n="prefix" v="rh"/>
             <value n="runInEditor" v="true"/>
-            <value n="taglibURL" v="jar:file:/X:/adfcomponent/Component/deploy/adf-multiselect-redheap.jar!/META-INF/rh.taglib.xml"/>
+            <value n="showInPalette" v="true"/>
+            <value n="taglibURL" v="@project@../Component/deploy/adf-multiselect-redheap.jar!/META-INF/rh.taglib.xml"/>
+            <value n="URI" v="http://www.redheap.com/rh"/>
+            <value n="version" v="2.0"/>
+         </hash>
+      </list>
+      <list n="facelets-tag-libraries-internalDefinitions">
+         <hash>
+            <value n="libraries" v="adf-multiselect-redheap.jar"/>
+            <value n="name" v="Rh"/>
+            <value n="prefix" v="rh"/>
+            <value n="runInEditor" v="false"/>
+            <value n="showInPalette" v="true"/>
+            <value n="taglibURL" v="@project@../Component/deploy/adf-multiselect-redheap.jar!/META-INF/rh.taglib.xml"/>
             <value n="URI" v="http://www.redheap.com/rh"/>
             <value n="version" v="2.0"/>
          </hash>
