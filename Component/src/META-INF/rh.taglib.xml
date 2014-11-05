@@ -22,5 +22,9 @@
             <name>value</name>
             <type>java.util.List</type>
         </attribute>
+        <attribute>
+            <name>itemSelectListener</name>
+            <type>javax.el.MethodExpression</type>
+        </attribute>
     </tag>
 </facelet-taglib>
