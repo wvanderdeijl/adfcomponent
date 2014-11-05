@@ -20,7 +20,7 @@ public class MultiSelect extends UIXSelectOrder {
 
     //Define the properties on the component.
 //    static public final PropertyKey INLINE_STYLE_KEY = TYPE.registerKey("inlineStyle", String.class);
-//    static public final PropertyKey STYLE_CLASS_KEY = TYPE.registerKey("styleClass", String.class);
+    static public final PropertyKey STYLE_CLASS_KEY = TYPE.registerKey("styleClass", String.class);
 //    static public final PropertyKey AUTO_SUBMIT_KEY = TYPE.registerKey("autoSubmit", String.class);
 //    static public final PropertyKey ATTR_CHANGE_LIST_KEY = TYPE.registerKey("attributeChangeListener ", String.class);
 //    static public final PropertyKey BINDING_KEY = TYPE.registerKey("binding", String.class);
@@ -69,6 +69,14 @@ public class MultiSelect extends UIXSelectOrder {
 //        return (String) getProperty(INLINE_STYLE_KEY);
 //    }
 
+    public void setStyleClass(String input) {
+        setProperty(STYLE_CLASS_KEY, input);
+    }
+
+    public String getStyleClass() {
+        return (String) getProperty(STYLE_CLASS_KEY);
+    }
+
     public void setItemSelectListener(MethodExpression input) {
         setProperty(ITEM_SELECT_KEY, input);
     }
@@ -103,5 +111,7 @@ public class MultiSelect extends UIXSelectOrder {
         }
         super.broadcast(event);
     }
+    
+    
 
 }

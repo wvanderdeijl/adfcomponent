@@ -10,5 +10,9 @@
             <renderer-type>com.redheap.rh.rendertype.MultiSelect</renderer-type>
             <handler-class>oracle.adfinternal.view.faces.facelets.rich.RichComponentHandler</handler-class>
         </component>
+        <attribute>
+            <name>styleClass</name>
+            <type>java.lang.String</type>
+        </attribute>
     </tag>
 </facelet-taglib>

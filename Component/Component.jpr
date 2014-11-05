@@ -194,11 +194,11 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <url n="id" path="../../../Users/user/AppData/Roaming/JDeveloper/system12.1.3.0.41.140521.1008/o.jdeveloper/Adf_121300_1008_source.zip.library"/>
+            <value n="id" v="ADF Common Runtime"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="ADF Common Runtime"/>
+            <url n="id" protocol="file" path="/C:/oracle/JDevHome/system12.1.3.0.41.140521.1008/o.jdeveloper/Adf_121300_1008_source.zip.library"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>
@@ -220,11 +220,11 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <url n="id" path="../../../Users/user/AppData/Roaming/JDeveloper/system12.1.3.0.41.140521.1008/o.jdeveloper/Adf_121300_1008_source.zip.library"/>
+            <value n="id" v="ADF Common Runtime"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="ADF Common Runtime"/>
+            <url n="id" protocol="file" path="/C:/oracle/JDevHome/system12.1.3.0.41.140521.1008/o.jdeveloper/Adf_121300_1008_source.zip.library"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>

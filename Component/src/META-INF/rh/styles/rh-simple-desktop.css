@@ -1,22 +1,22 @@
-.redheap-multi-select {
+rh|multiSelect{
     display: inline-block;
     border: 1px solid red;
 }
 
-.redheap-multi-select > .representation > ul {
+rh|multiSelect::content {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.redheap-multi-select > .representation .item-row {
+rh|multiSelect::item {
     display: inline-block;
     padding: 3px 3px 1px 0px;
     position: relative;
     /* make this a positioning container */
 }
 
-.redheap-multi-select > .representation .item-row > .value-item {
+rh|multiSelect::item-content {
     border-width: 1px;
     border-style: solid;
     font-size: 14px;
@@ -30,7 +30,7 @@
     color: #3b73af;
 }
 
-.redheap-multi-select > .representation .item-row > .item-delete {
+rh|multiSelect::item-delete {
     position: absolute;
     right: 4px;
     bottom: 2px;
@@ -40,6 +40,6 @@
     font-weight: bold;
 }
 
-.redheap-multi-select > .representation .item-row > .item-delete:after {
+rh|multiSelect::item-delete:after {
     content: '\00d7';
 }
