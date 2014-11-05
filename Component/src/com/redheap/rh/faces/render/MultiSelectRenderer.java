@@ -31,34 +31,39 @@ public class MultiSelectRenderer extends RichRenderer {
         //SelectManyChoiceRenderer
         ResponseWriter rw = facesContext.getResponseWriter();
         rw.startElement("div", component); //rootElement so add to the multiSelect UIComponent.
-        
+
         renderId(facesContext, component, clientComponent);
         renderAllRootAttributes(facesContext, renderingContext, clientComponent, facesBean);
-        
         rw.startElement("ul", null);
         RichRenderer.renderStyleClass(facesContext, renderingContext, "rh|multiSelect::content");
-        rw.startElement("li", null);
-        RichRenderer.renderStyleClass(facesContext, renderingContext, "rh|multiSelect::item");
-        rw.writeAttribute("title", "Salary between 10 and 100", null);
-        rw.startElement("button", null);
-        RichRenderer.renderStyleClass(facesContext, renderingContext, "rh|multiSelect::item-content");
-        rw.writeAttribute("type", "button", null);
-        rw.writeAttribute("tabindex", "-1", null);
-        rw.startElement("span", null);        
-        rw.writeText("Salary between 10 and 100", null);
-        rw.endElement("span");
-        rw.endElement("button");
-        rw.startElement("span", null);
-        rw.writeAttribute("title", "Remove", null);
-        RichRenderer.renderStyleClass(facesContext, renderingContext, "rh|multiSelect::item-delete");
-        rw.endElement("span");
-        rw.endElement("li");
+
+        for (int i = 1; i <= 3; i++) {
+            String title = "Salary between " + i*10 + " and " +i*100;
+            
+            rw.startElement("li", null);
+            RichRenderer.renderStyleClass(facesContext, renderingContext, "rh|multiSelect::item");
+            rw.writeAttribute("title", title, null);
+            rw.startElement("button", null);
+            RichRenderer.renderStyleClass(facesContext, renderingContext, "rh|multiSelect::item-content");
+            rw.writeAttribute("type", "button", null);
+            rw.writeAttribute("tabindex", "-1", null);
+            rw.startElement("span", null);
+            rw.writeText(title, null);
+            rw.endElement("span");
+            rw.endElement("button");
+            rw.startElement("span", null);
+            rw.writeAttribute("title", "Remove", null);
+            RichRenderer.renderStyleClass(facesContext, renderingContext, "rh|multiSelect::item-delete");
+            rw.endElement("span");
+            rw.endElement("li");
+        }
+
         rw.endElement("ul");
         rw.endElement("div");
     }
 
     @Override
-    protected String getDefaultStyleClass(FacesContext context, RenderingContext arc, FacesBean bean) {        
+    protected String getDefaultStyleClass(FacesContext context, RenderingContext arc, FacesBean bean) {
         return "rh|multiSelect";
     }
 
