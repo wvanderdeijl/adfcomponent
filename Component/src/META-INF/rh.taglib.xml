@@ -8,7 +8,7 @@
         <component>
             <component-type>com.redheap.rh.componenttype.MultiSelect</component-type>
             <renderer-type>com.redheap.rh.rendertype.MultiSelect</renderer-type>
-            <handler-class>com.redheap.rh.faces.component.RedheapComponentHandler</handler-class>
+            <handler-class>com.redheap.rh.faces.facelets.RedheapComponentHandler</handler-class>
         </component>
         <!-- need to list all attributes here for editor (and code completion) in JDeveloper -->
         <attribute>

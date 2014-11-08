@@ -1,4 +1,4 @@
-package com.redheap.rh.faces.component;
+package com.redheap.rh.faces.facelets;
 
 import java.beans.PropertyDescriptor;
 

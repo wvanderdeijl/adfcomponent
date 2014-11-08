@@ -1,4 +1,5 @@
-package com.redheap.rh.faces.component;
+package com.redheap.rh.faces.facelets;
+
 
 import javax.faces.view.facelets.ComponentConfig;
 import javax.faces.view.facelets.MetaRuleset;
