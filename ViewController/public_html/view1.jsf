@@ -5,9 +5,9 @@
         xmlns:rh="http://www.redheap.com/rh">
     <af:document title="view1.jsf" id="d1">
         <af:form id="f1">
-            <rh:multiSelect id="ms1" 
-            itemSelectListener="#{backingBeanScope.selectionBean.processItemSelect}" 
-            value="#{backingBeanScope.itemSupportBean.itemList}"/>
+            <rh:multiSelect id="ms1" value="#{backingBeanScope.itemSupportBean.itemList}"
+                            itemSelectListener="#{backingBeanScope.selectionBean.processItemSelect}"/>
         </af:form>
+        <af:calendar id="c1" calendarDisplayChangeListener="#{backingBeanScope.selectionBean.calendarDisplayChanged}"/>
     </af:document>
 </f:view>
