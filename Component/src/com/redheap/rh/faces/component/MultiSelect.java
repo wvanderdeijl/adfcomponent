@@ -7,8 +7,9 @@ import javax.faces.event.FacesEvent;
 import javax.faces.event.PhaseId;
 
 import oracle.adf.share.logging.ADFLogger;
-import oracle.adf.view.rich.com.redheap.rh.faces.event.ItemSelectEvent;
-import oracle.adf.view.rich.com.redheap.rh.faces.event.ItemSelectListener;
+
+import com.redheap.rh.faces.event.ItemSelectEvent;
+import com.redheap.rh.faces.event.ItemSelectListener;
 
 import org.apache.myfaces.trinidad.bean.FacesBean;
 import org.apache.myfaces.trinidad.bean.PropertyKey;

@@ -1,6 +1,7 @@
 package com.redheap.rh.faces.render;
 
 import com.redheap.rh.faces.component.MultiSelect;
+import com.redheap.rh.faces.event.ItemSelectEvent;
 
 import java.io.IOException;
 
@@ -10,7 +11,6 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import oracle.adf.view.rich.com.redheap.rh.faces.event.ItemSelectEvent;
 import oracle.adf.view.rich.render.ClientComponent;
 import oracle.adf.view.rich.render.ClientEvent;
 import oracle.adf.view.rich.render.ClientMetadata;

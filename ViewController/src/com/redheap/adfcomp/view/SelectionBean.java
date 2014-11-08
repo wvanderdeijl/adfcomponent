@@ -1,10 +1,11 @@
 package com.redheap.adfcomp.view;
 
+import com.redheap.rh.faces.event.ItemSelectEvent;
+import com.redheap.rh.faces.event.ItemSelectListener;
+
 import javax.faces.context.FacesContext;
 import javax.faces.event.AbortProcessingException;
 
-import oracle.adf.view.rich.com.redheap.rh.faces.event.ItemSelectEvent;
-import oracle.adf.view.rich.com.redheap.rh.faces.event.ItemSelectListener;
 
 public class SelectionBean implements ItemSelectListener {
 
