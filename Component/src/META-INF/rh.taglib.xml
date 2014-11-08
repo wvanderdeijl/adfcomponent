@@ -10,6 +10,7 @@
             <renderer-type>com.redheap.rh.rendertype.MultiSelect</renderer-type>
             <handler-class>oracle.adfinternal.view.faces.facelets.rich.RichComponentHandler</handler-class>
         </component>
+        <!-- need to list all attributes here for editor (and code completion) in JDeveloper -->
         <attribute>
             <name>styleClass</name>
             <type>java.lang.String</type>
@@ -25,7 +26,7 @@
         <attribute>
             <name>itemSelectListener</name>
             <type>javax.el.MethodExpression</type>
-            <method-signature>void processItemSelect(com.redheap.rh.faces.event.ItemSelectEvent)</method-signature>
+            <method-signature>void myMethod(oracle.adf.view.rich.com.redheap.rh.faces.event.ItemSelectEvent)</method-signature>
         </attribute>
     </tag>
 </facelet-taglib>

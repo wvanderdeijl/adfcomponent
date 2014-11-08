@@ -8,10 +8,11 @@ import java.util.List;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
-
 import javax.faces.context.ResponseWriter;
 
+import oracle.adf.view.rich.com.redheap.rh.faces.event.ItemSelectEvent;
 import oracle.adf.view.rich.render.ClientComponent;
+import oracle.adf.view.rich.render.ClientEvent;
 import oracle.adf.view.rich.render.ClientMetadata;
 import oracle.adf.view.rich.render.RichRenderer;
 
@@ -20,8 +21,9 @@ import org.apache.myfaces.trinidad.bean.PropertyKey;
 import org.apache.myfaces.trinidad.context.RenderingContext;
 
 public class MultiSelectRenderer extends RichRenderer {
-    private PropertyKey    _value;
-    
+
+    private PropertyKey _value;
+
     public MultiSelectRenderer() {
         this(MultiSelect.TYPE);
     }
@@ -45,7 +47,7 @@ public class MultiSelectRenderer extends RichRenderer {
         List<String> value = (List<String>) facesBean.getProperty(_value);
         for (int i = 0; i < value.size(); i++) {
             String title = value.get(i);
-            
+
             rw.startElement("li", null);
             RichRenderer.renderStyleClass(facesContext, renderingContext, "rh|multiSelect::item");
             rw.writeAttribute("title", title, null);
@@ -81,8 +83,12 @@ public class MultiSelectRenderer extends RichRenderer {
 
     @Override
     public void decodeInternal(FacesContext context, UIComponent component, String clientId) {
-        // TODO Implement this method
         super.decodeInternal(context, component, clientId);
+        // see if any of our ClientEvents are in the request. If so, queue proper server side FacesEvent
+        ClientEvent selectEvent = getClientEvent(context, clientId, "itemSelect");
+        if (selectEvent != null) {
+            new ItemSelectEvent(component, (String) selectEvent.getParameters().get("item")).queue();
+        }
     }
 
     @Override
