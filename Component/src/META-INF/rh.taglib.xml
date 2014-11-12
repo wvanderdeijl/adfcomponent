@@ -8,12 +8,9 @@
         <component>
             <component-type>com.redheap.rh.componenttype.MultiSelect</component-type>
             <renderer-type>com.redheap.rh.rendertype.MultiSelect</renderer-type>
-            <handler-class>oracle.adfinternal.view.faces.facelets.rich.RichComponentHandler</handler-class>
+            <handler-class>com.redheap.rh.faces.facelets.RedheapComponentHandler</handler-class>
         </component>
-<<<<<<< .merge_file_a01788
-=======
         <!-- need to list all attributes here for editor (and code completion) in JDeveloper -->
->>>>>>> .merge_file_a04112
         <attribute>
             <name>styleClass</name>
             <type>java.lang.String</type>
@@ -29,11 +26,8 @@
         <attribute>
             <name>itemSelectListener</name>
             <type>javax.el.MethodExpression</type>
-<<<<<<< .merge_file_a01788
-            <method-signature>void processItemSelect(com.redheap.rh.faces.event.ItemSelectEvent)</method-signature>
-=======
-            <method-signature>void myMethod(oracle.adf.view.rich.com.redheap.rh.faces.event.ItemSelectEvent)</method-signature>
->>>>>>> .merge_file_a04112
+            <!-- method signature for JDeveloper design time support -->
+            <method-signature>void myMethod(com.redheap.rh.faces.event.ItemSelectEvent)</method-signature>
         </attribute>
     </tag>
 </facelet-taglib>

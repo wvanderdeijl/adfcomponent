@@ -1,4 +1,5 @@
-package oracle.adf.view.rich.com.redheap.rh.faces.event;
+package com.redheap.rh.faces.event;
+
 
 import javax.faces.event.AbortProcessingException;
 import javax.faces.event.FacesListener;

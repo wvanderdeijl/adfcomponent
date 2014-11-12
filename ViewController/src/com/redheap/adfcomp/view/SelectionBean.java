@@ -1,5 +1,6 @@
 package com.redheap.adfcomp.view;
 
+<<<<<<< HEAD
 <<<<<<< .merge_file_a06020
 import com.redheap.rh.faces.event.ItemSelectEvent;
 import com.redheap.rh.faces.event.ItemSelectListener;
@@ -7,11 +8,14 @@ import com.redheap.rh.faces.event.ItemSelectListener;
 import javax.faces.event.AbortProcessingException;
 
 =======
+=======
+import com.redheap.rh.faces.event.ItemSelectEvent;
+import com.redheap.rh.faces.event.ItemSelectListener;
+
+>>>>>>> c6380da22e0270ee00991499f8660ee4228d3abd
 import javax.faces.context.FacesContext;
 import javax.faces.event.AbortProcessingException;
 
-import oracle.adf.view.rich.com.redheap.rh.faces.event.ItemSelectEvent;
-import oracle.adf.view.rich.com.redheap.rh.faces.event.ItemSelectListener;
 
 >>>>>>> .merge_file_a06856
 public class SelectionBean implements ItemSelectListener {
