@@ -1,13 +1,22 @@
+/**
+    The div in which the items will be shown.
+*/
 rh|multiSelect{
     display: inline-block;
 }
 
+/**
+    The ul that holds the list of items.
+*/
 rh|multiSelect::content {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
+/**
+  The li that holds the item.
+*/
 rh|multiSelect::item {
     display: inline-block;
     padding: 3px 3px 1px 0px;
@@ -15,20 +24,29 @@ rh|multiSelect::item {
     /* make this a positioning container */
 }
 
+/**
+  The button that represents the item.
+*/
 rh|multiSelect::item-content {
+    -tr-rule-ref:selector(".AFDefaultFont:alias");
+
     border-width: 1px;
     border-style: solid;
-    font-size: 14px;
     margin: 1px;
     padding: 0px 20px 0px 5px;
     /* 20px right for delete icon */
 
     border-radius: 3px;
+    /* this should come from the AFDefaultFont
+    font-size: 14px;
     background: #f5f5f5;
     border-color: #ccc;
-    color: #3b73af;
+    color: #3b73af;*/
 }
 
+/**
+  The span next to the button that renders the delete icon.
+*/
 rh|multiSelect::item-delete {
     position: absolute;
     right: 4px;
