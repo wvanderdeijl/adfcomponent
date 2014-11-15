@@ -3,13 +3,9 @@ package com.redheap.rh.faces.render;
 import com.redheap.rh.faces.component.MultiSelect;
 import com.redheap.rh.faces.event.ItemSelectEvent;
 
-import com.redheap.rh.faces.event.ItemSelectEvent;
-
 import java.io.IOException;
 
 import java.util.List;
-
-import java.util.Map;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
