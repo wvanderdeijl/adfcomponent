@@ -59,8 +59,6 @@
       <string v="oracle.toplink.workbench.addin/toplinkContentSet"/>
    </list>
    <value n="defaultPackage" v="com.redheap.adfcomp.view"/>
-<<<<<<< .merge_file_a04112
-=======
    <hash n="oracle.ide.model.DependencyConfiguration">
       <list n="dependencyList">
          <hash>
@@ -75,7 +73,6 @@
          </hash>
       </list>
    </hash>
->>>>>>> .merge_file_a04592
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
          <string v="ADF_FACES"/>

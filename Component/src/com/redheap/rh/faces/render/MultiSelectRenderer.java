@@ -86,26 +86,12 @@ public class MultiSelectRenderer extends RichRenderer {
     }
 
     @Override
-<<<<<<< .merge_file_a05096
-    public void decodeInternal(FacesContext context, UIComponent component, String clientId) {        
-        ClientEvent event = getClientEvent(context, clientId, "itemSelect");
-
-        if (event != null)
-        {
-            Map<String, Object> params = event.getParameters();
-            Object item = params.get("item");
-            
-            if(item != null) {
-                new ItemSelectEvent(component, item.toString()).queue();
-            }
-=======
     public void decodeInternal(FacesContext context, UIComponent component, String clientId) {
         super.decodeInternal(context, component, clientId);
         // see if any of our ClientEvents are in the request. If so, queue proper server side FacesEvent
         ClientEvent selectEvent = getClientEvent(context, clientId, "itemSelect");
         if (selectEvent != null) {
             new ItemSelectEvent(component, (String) selectEvent.getParameters().get("item")).queue();
->>>>>>> .merge_file_a04124
         }
     }
 

@@ -1,12 +1,11 @@
 package com.redheap.rh.faces.component;
 
-<<<<<<< .merge_file_a05100
 import com.redheap.rh.faces.event.ItemSelectEvent;
+
+import com.redheap.rh.faces.event.ItemSelectListener;
 
 import java.util.List;
 
-=======
->>>>>>> .merge_file_a05676
 import javax.el.MethodExpression;
 
 import javax.faces.event.AbortProcessingException;
@@ -15,12 +14,10 @@ import javax.faces.event.PhaseId;
 
 import oracle.adf.share.logging.ADFLogger;
 
-import com.redheap.rh.faces.event.ItemSelectEvent;
-import com.redheap.rh.faces.event.ItemSelectListener;
-
 import org.apache.myfaces.trinidad.bean.FacesBean;
 import org.apache.myfaces.trinidad.bean.PropertyKey;
 import org.apache.myfaces.trinidad.component.UIXSelectOrder;
+
 
 public class MultiSelect extends UIXSelectOrder {
 
@@ -36,13 +33,9 @@ public class MultiSelect extends UIXSelectOrder {
     static public final PropertyKey CLIENT_ATTRIBUTE_KEY = TYPE.registerKey("clientAttributesKey", String.class);
     static public final PropertyKey CLIENT_LISTENER_KEY = TYPE.registerKey("clientListenersKey", String.class);
     static public final PropertyKey UNSECURE_KEY = TYPE.registerKey("unsecureKey", String.class);
-<<<<<<< .merge_file_a05100
     
     
     static public final PropertyKey ITEM_SELECT_KEY = TYPE.registerKey("itemSelectListener", MethodExpression.class);
-=======
-
->>>>>>> .merge_file_a05676
     //Define the properties on the component.
     //    static public final PropertyKey AUTO_SUBMIT_KEY = TYPE.registerKey("autoSubmit", String.class);
     //    static public final PropertyKey ATTR_CHANGE_LIST_KEY = TYPE.registerKey("attributeChangeListener ", String.class);
@@ -96,9 +89,6 @@ public class MultiSelect extends UIXSelectOrder {
     }
 
     public MethodExpression getItemSelectListener() {
-<<<<<<< .merge_file_a05100
-        return (MethodExpression) getProperty(ITEM_SELECT_KEY);        
-=======
         return (MethodExpression) getProperty(ITEM_SELECT_KEY);
     }
 
@@ -112,7 +102,6 @@ public class MultiSelect extends UIXSelectOrder {
 
     public void removeItemSelectListener(ItemSelectListener listener) {
         removeFacesListener(listener);
->>>>>>> .merge_file_a05676
     }
 
     /**
@@ -143,14 +132,8 @@ public class MultiSelect extends UIXSelectOrder {
         // notify the bound TagSelectListener
         if (event instanceof ItemSelectEvent) {
             // utility method found in UIXComponentBase for invoking method event expressions
-<<<<<<< .merge_file_a05100
-            broadcastToMethodExpression((ItemSelectEvent) event, getItemSelectListener());
-        }
-        
-=======
             broadcastToMethodExpression(event, getItemSelectListener());
         }
->>>>>>> .merge_file_a05676
         super.broadcast(event);
     }
 }
