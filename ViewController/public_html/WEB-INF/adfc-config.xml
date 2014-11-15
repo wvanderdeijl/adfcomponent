@@ -14,7 +14,7 @@
   <managed-bean id="__2">
     <managed-bean-name>itemSupportBean</managed-bean-name>
     <managed-bean-class>com.redheap.adfcomp.view.support.ItemSupportBean</managed-bean-class>
-    <managed-bean-scope>backingBean</managed-bean-scope>
+    <managed-bean-scope>view</managed-bean-scope>
   </managed-bean>
   <managed-bean id="__3">
     <managed-bean-name>now</managed-bean-name>

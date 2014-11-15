@@ -2,4 +2,5 @@
 <trinidad-config xmlns="http://myfaces.apache.org/trinidad/config">
   <skin-family>alta</skin-family>
   <skin-version>v1</skin-version>
+  <debug-output>#{facesContext.externalContext.initParameterMap['org.apache.myfaces.trinidad.DEBUG_JAVASCRIPT']}</debug-output>
 </trinidad-config>

@@ -7,6 +7,11 @@ import javax.faces.event.AbortProcessingException;
 
 public class SelectionBean {
     private String selectedItem;
+    private String text = "initialText";
+
+    public SelectionBean() {
+        super();
+    }
 
     public void setSelectedItem(String selectedItem) {
         this.selectedItem = selectedItem;
@@ -16,8 +21,12 @@ public class SelectionBean {
         return selectedItem;
     }
 
-    public SelectionBean() {
-        super();
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getText() {
+        return text;
     }
 
     public void processItemSelect(ItemSelectEvent event) throws AbortProcessingException {

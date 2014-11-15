@@ -29,5 +29,9 @@
             <!-- method signature for JDeveloper design time support -->
             <method-signature>void myMethod(com.redheap.rh.faces.event.ItemSelectEvent)</method-signature>
         </attribute>
+        <attribute>
+            <name>partialTriggers</name>
+            <type>java.lang.String[]</type>
+        </attribute>
     </tag>
 </facelet-taglib>

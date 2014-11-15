@@ -26,7 +26,7 @@ public class ListenersTagRule extends MetaRule {
     @Override
     public Metadata applyRule(String attrName, TagAttribute faceletsTagAttr, MetadataTarget target) {
         Class cls = target.getPropertyType(attrName);
-        if (!(MethodExpression.class.isAssignableFrom(cls) && attrName.endsWith("Listener"))) {
+        if (!(cls != null && MethodExpression.class.isAssignableFrom(cls) && attrName.endsWith("Listener"))) {
             return null; // component property must be type MethodExpression and its name end with Listener
         }
         // get setter method on JSF component

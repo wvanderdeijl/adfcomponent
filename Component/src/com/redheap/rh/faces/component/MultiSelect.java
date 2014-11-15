@@ -20,11 +20,17 @@ public class MultiSelect extends UIXSelectOrder {
 
     static public final FacesBean.Type TYPE = new FacesBean.Type(UIXSelectOrder.TYPE);
 
+    // WARNING: Each property must have the correct setters and getters. The RedheapComponentHandler
+    // and its super classes use reflection to see if the component class can receive these properties
+    // If they can't find an appropriate setter they will simply store the attribute as a string in
+    // the FacesBean. This leads to issues with all non-string attributes (like listeners, string arrays,
+    // or other non-string fields)
+
     //Required properties by the RichRenderer.
     static public final PropertyKey INLINE_STYLE_KEY = TYPE.registerKey("inlineStyle", String.class);
     static public final PropertyKey STYLE_CLASS_KEY = TYPE.registerKey("styleClass", String.class);
     static public final PropertyKey SHORT_DESC_KEY = TYPE.registerKey("shortDesc", String.class);
-    static public final PropertyKey PARTIAL_TRIGGERS_KEY = TYPE.registerKey("partialTriggers", String.class);
+    static public final PropertyKey PARTIAL_TRIGGERS_KEY = TYPE.registerKey("partialTriggers", String[].class);
     static public final PropertyKey VISIBLE_KEY = TYPE.registerKey("visible", Boolean.class, Boolean.TRUE);
     static public final PropertyKey CLIENT_COMPONENT_KEY = TYPE.registerKey("clientComponent", String.class);
     static public final PropertyKey CLIENT_ATTRIBUTE_KEY = TYPE.registerKey("clientAttributesKey", String.class);
@@ -99,6 +105,14 @@ public class MultiSelect extends UIXSelectOrder {
 
     public void removeItemSelectListener(ItemSelectListener listener) {
         removeFacesListener(listener);
+    }
+
+    public String[] getPartialTriggers() {
+        return (String[]) getProperty(PARTIAL_TRIGGERS_KEY);
+    }
+
+    public void setPartialTriggers(String[] partialTriggers) {
+        setProperty(PARTIAL_TRIGGERS_KEY, (partialTriggers));
     }
 
     /**

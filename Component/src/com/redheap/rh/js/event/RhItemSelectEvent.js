@@ -38,7 +38,7 @@ RhItemSelectEvent.prototype.AddMarshalledProperties = function(properties) {
 }
 
 ///**
-// * Convenient method for queue a RhItemSelectEvent.
+// * Convenient method for queue a RhItemSelectEvent. Is invoked by Peer object
 // */
 RhItemSelectEvent.queue = function(component, item) {
   AdfAssert.assertPrototype(component, RhMultiSelect);

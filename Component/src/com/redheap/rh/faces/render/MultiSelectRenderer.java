@@ -5,7 +5,11 @@ import com.redheap.rh.faces.event.ItemSelectEvent;
 
 import java.io.IOException;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -82,11 +86,22 @@ public class MultiSelectRenderer extends RichRenderer {
 
         @SuppressWarnings("unchecked")
         List value = (List) facesBean.getProperty(_value);
+        int[] clientKeys = new int[value.size()];
         for (int i = 0, n = value.size(); i < n; i++) {
             encodeItem(facesContext, renderCtx, value.get(i), i);
+            clientKeys[i] = i;
         }
-
         rw.endElement("ul"); // close unnumbered list
+
+        // render hidden input field with value (indices)
+        rw.startElement("input", null);
+        rw.writeAttribute("type", "hidden", null);
+        String inputId = component.getClientId(facesContext) + ":value";
+        rw.writeAttribute("id", inputId, null);
+        rw.writeAttribute("name", inputId, null);
+        rw.writeAttribute("value", Arrays.toString(clientKeys), null);
+        rw.endElement("input");
+
         rw.endElement("div"); // close root div
     }
 
@@ -156,6 +171,24 @@ public class MultiSelectRenderer extends RichRenderer {
     @Override
     public void decodeInternal(FacesContext context, UIComponent component, String clientId) {
         super.decodeInternal(context, component, clientId);
+        String hiddenInputId = clientId + ":value";
+        Map<String, String> request = context.getExternalContext().getRequestParameterMap();
+        if (request.containsKey(hiddenInputId)) {
+            String[] clientKeepStr = request.get(hiddenInputId).replace("[","").replace("]","").split(",");
+            List<Integer> keepIdx = new ArrayList<Integer>(clientKeepStr.length);
+            for (int i=0, n=clientKeepStr.length; i<n; i++) {
+                keepIdx.add(Integer.parseInt(clientKeepStr[i].trim()));
+            }
+            // TODO: shouldn't we queue an event or use some other way to postpone this to Update-Model phase
+            List serverValues = (List) component.getAttributes().get(_value);
+            int idx = 0;
+            for (Iterator iter = serverValues.iterator(); iter.hasNext(); idx++) {
+                iter.next();
+                if (!keepIdx.contains(idx)) {
+                    iter.remove();
+                }
+            }
+        }
         // see if any of our ClientEvents are in the request. If so, queue proper server side FacesEvent
         ClientEvent selectEvent = getClientEvent(context, clientId, "itemSelect");
         if (selectEvent != null) {
