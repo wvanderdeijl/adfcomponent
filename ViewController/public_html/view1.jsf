@@ -6,8 +6,13 @@
     <af:document title="view1.jsf" id="d1">
         <af:form id="f1">
             <rh:multiSelect id="ms1" value="#{backingBeanScope.itemSupportBean.itemList}"
-                            itemSelectListener="#{backingBeanScope.selectionBean.processItemSelect}"/>
+                            itemSelectListener="#{viewScope.selectionBean.processItemSelect}"/>
+            <af:spacer id="sp1" height="5px"/>
+            <af:commandButton id="cb1" text="full submit"/>
+            <af:spacer id="s2" height="25px"/>
+            <af:outputText id="ot1" partialTriggers="ms1" value="#{viewScope.selectionBean.selectedItem}"/>
+            <af:spacer id="s1" height="10px"/>
+            <af:outputText id="ot2" value="#{now.time}"/>
         </af:form>
-        <af:calendar id="c1" calendarDisplayChangeListener="#{backingBeanScope.selectionBean.calendarDisplayChanged}"/>
     </af:document>
 </f:view>

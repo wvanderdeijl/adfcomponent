@@ -7,8 +7,6 @@ import javax.faces.event.FacesListener;
 
 public interface ItemSelectListener extends FacesListener {
 
-    //FIXME: PlaceHolder code from the Oracle Example.
-
     /**
      * <p>Process the {@link TagSelectEvent}.</p>
      * @param event fired on click of a tag link

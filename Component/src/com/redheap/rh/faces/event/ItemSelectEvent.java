@@ -8,10 +8,10 @@ import javax.faces.event.FacesListener;
 import oracle.adf.share.logging.ADFLogger;
 
 public class ItemSelectEvent extends FacesEvent {
+    @SuppressWarnings("compatibility:-8761226946340020792")
+    private static final long serialVersionUID = 1L;
 
     private static final ADFLogger logger = ADFLogger.createADFLogger(ItemSelectEvent.class);
-
-    //FIXME: Placeholder code from the Oracle Example.
 
     /**
      * <p>Item selected on the client.</p>
