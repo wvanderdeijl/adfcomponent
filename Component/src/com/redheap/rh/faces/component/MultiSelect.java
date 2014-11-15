@@ -1,10 +1,7 @@
 package com.redheap.rh.faces.component;
 
 import com.redheap.rh.faces.event.ItemSelectEvent;
-
 import com.redheap.rh.faces.event.ItemSelectListener;
-
-import java.util.List;
 
 import javax.el.MethodExpression;
 
@@ -33,8 +30,8 @@ public class MultiSelect extends UIXSelectOrder {
     static public final PropertyKey CLIENT_ATTRIBUTE_KEY = TYPE.registerKey("clientAttributesKey", String.class);
     static public final PropertyKey CLIENT_LISTENER_KEY = TYPE.registerKey("clientListenersKey", String.class);
     static public final PropertyKey UNSECURE_KEY = TYPE.registerKey("unsecureKey", String.class);
-    
-    
+
+
     static public final PropertyKey ITEM_SELECT_KEY = TYPE.registerKey("itemSelectListener", MethodExpression.class);
     //Define the properties on the component.
     //    static public final PropertyKey AUTO_SUBMIT_KEY = TYPE.registerKey("autoSubmit", String.class);
@@ -52,7 +49,7 @@ public class MultiSelect extends UIXSelectOrder {
     //    static public final PropertyKey CONVERTER_KEY = TYPE.registerKey("converter", String.class);
     //    static public final PropertyKey DISABLED_KEY = TYPE.registerKey("disabled", String.class);
     //    static public final PropertyKey VALIDATOR_KEY = TYPE.registerKey("validator", String.class);
-    //    static public final PropertyKey VAL_CHANGE_LIST_KEY = TYPE.registerKey("valueChangeListener", String.class);    
+    //    static public final PropertyKey VAL_CHANGE_LIST_KEY = TYPE.registerKey("valueChangeListener", String.class);
 
     private static final ADFLogger logger = ADFLogger.createADFLogger(MultiSelect.class);
 
