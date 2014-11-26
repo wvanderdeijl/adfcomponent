@@ -16,6 +16,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.convert.ConverterException;
 
+import oracle.adf.share.logging.ADFLogger;
 import oracle.adf.view.rich.render.ClientComponent;
 import oracle.adf.view.rich.render.ClientEvent;
 import oracle.adf.view.rich.render.ClientMetadata;
@@ -39,6 +40,7 @@ import org.apache.myfaces.trinidad.context.RenderingContext;
  * the renderer features.
  */
 public class MultiSelectRenderer extends RichRenderer {
+    private static final ADFLogger logger = ADFLogger.createADFLogger(MultiSelectRenderer.class);
 
     private PropertyKey _value;
 
@@ -170,9 +172,11 @@ public class MultiSelectRenderer extends RichRenderer {
      */
     @Override
     public void decodeInternal(FacesContext context, UIComponent component, String clientId) {
+
         super.decodeInternal(context, component, clientId);
         String hiddenInputId = clientId + ":value";
         Map<String, String> request = context.getExternalContext().getRequestParameterMap();
+        logger.fine("hiddenInputId: " + request.get(hiddenInputId));
         String submittedValue = request.get(hiddenInputId);
         if (submittedValue != null && component instanceof EditableValueHolder) {
             EditableValueHolder evh = (EditableValueHolder) component;
@@ -181,7 +185,9 @@ public class MultiSelectRenderer extends RichRenderer {
         // see if any of our ClientEvents are in the request. If so, queue proper server side FacesEvent
         ClientEvent selectEvent = getClientEvent(context, clientId, "itemSelect");
         if (selectEvent != null) {
-            new ItemSelectEvent(component, (String) selectEvent.getParameters().get("item")).queue();
+            String item = (String) selectEvent.getParameters().get("item");
+            logger.fine("selectEvent not null, ItemSelectEvent for: " + item);
+            new ItemSelectEvent(component, item).queue();
         }
     }
 

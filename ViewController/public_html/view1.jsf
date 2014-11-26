@@ -3,22 +3,26 @@
 <f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
         xmlns:rh="http://www.redheap.com/rh">
     <af:document title="view1.jsf" id="d1">
-        <af:form id="f1">
-            <rh:multiSelect id="ms1" value="#{viewScope.itemSupportBean.itemList}"
-                            itemSelectListener="#{viewScope.selectionBean.processItemSelect}"
-                            partialTriggers="b3 it4"/>
-            <af:spacer id="sp1" height="5px"/>
-            <af:button id="b1" text="full submit"/>
-            <af:button id="b2" text="partial submit (only date and inputText)" partialSubmit="true"/>
-            <af:button id="b3" text="partial submit (only multiselect)" partialSubmit="true"/>
-            <af:spacer id="s2" height="25px"/>
-            <af:inputText id="it1" partialTriggers="ms1" value="#{viewScope.selectionBean.selectedItem}" label="selected item"
-                          readOnly="true"/>
-            <af:spacer id="s1" height="10px"/>
-            <af:outputText id="ot2" value="#{now.time}" partialTriggers="b2"/>
-            <af:inputText id="it2" label="autosubmit input" value="#{viewScope.selectionBean.text}" autoSubmit="true"/>
-            <af:inputText id="it3" label="partialtrigger with as1" partialTriggers="it2"/>
-            <af:inputText id="it4" label="autosubmit input met multiselect" autoSubmit="true"/>
+        <af:form id="f1" partialTriggers="b1">
+            <af:panelGroupLayout layout="horizontal" id="pgl1">
+                <af:inputText label="new item: " value="#{viewScope.itemSupportBean.newItem}" id="it5"
+                              partialTriggers="b4"/>
+                <af:button id="b4" text="add" actionListener="#{viewScope.itemSupportBean.addItem}"/>
+            </af:panelGroupLayout>
+            <af:spacer height="10px" id="s3"/>
+            <af:panelGroupLayout layout="horizontal" inlineStyle="border: 2px solid red;" id="pgl2">
+                <rh:multiSelect id="ms1" value="#{viewScope.itemSupportBean.itemList}"
+                                itemSelectListener="#{viewScope.selectionBean.processItemSelect}"
+                                partialTriggers="b1 b4 it4"/>
+            </af:panelGroupLayout>
+            <af:spacer height="10px" id="s4"/>
+            <af:outputText id="ot2" value="#{now}">
+                <af:convertDateTime type="both" timeStyle="medium"/>
+            </af:outputText>
+            <af:inputText id="it1" partialTriggers="ms1" value="#{viewScope.selectionBean.selectedItem}"
+                          label="selected item" readOnly="true"/>
+            <af:spacer height="10px" id="s1"/>
+            <af:button id="b1" text="submit"/>
         </af:form>
     </af:document>
 </f:view>
