@@ -13,15 +13,13 @@ public class RedheapComponentHandler extends RichComponentHandler {
     }
 
     /**
-     *
-     * @param type
      * @return A set of rules to be used in auto-wiring state to a particular object instance.
      */
     @Override
     protected MetaRuleset createMetaRuleset(Class type) {
         MetaRuleset retval = super.createMetaRuleset(type);
         retval.addRule(ListenersTagRule.INSTANCE);
-        //retval.addRule();
         return retval;
     }
+
 }

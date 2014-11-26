@@ -7,13 +7,14 @@ import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.faces.component.EditableValueHolder;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
+import javax.faces.convert.ConverterException;
 
 import oracle.adf.view.rich.render.ClientComponent;
 import oracle.adf.view.rich.render.ClientEvent;
@@ -46,7 +47,7 @@ public class MultiSelectRenderer extends RichRenderer {
      * Will use {@link MultiSelect#TYPE} to describe all possible properties.
      */
     public MultiSelectRenderer() {
-        this(MultiSelect.TYPE);
+        super(MultiSelect.TYPE);
     }
 
     /**
@@ -82,7 +83,7 @@ public class MultiSelectRenderer extends RichRenderer {
 
         // render an unnumbered list with all the items
         rw.startElement("ul", null);
-        RichRenderer.renderStyleClass(facesContext, renderCtx, "rh|multiSelect::content");
+        renderStyleClass(facesContext, renderCtx, "rh|multiSelect::content");
 
         @SuppressWarnings("unchecked")
         List value = (List) facesBean.getProperty(_value);
@@ -118,11 +119,11 @@ public class MultiSelectRenderer extends RichRenderer {
         ResponseWriter rw = facesContext.getResponseWriter();
         String s = item == null ? "" : item.toString();
         rw.startElement("li", null);
-        RichRenderer.renderStyleClass(facesContext, renderCtx, "rh|multiSelect::item");
+        renderStyleClass(facesContext, renderCtx, "rh|multiSelect::item");
         rw.writeAttribute("title", s, null);
         rw.writeAttribute("rh-li", index, null);
         rw.startElement("button", null);
-        RichRenderer.renderStyleClass(facesContext, renderCtx, "rh|multiSelect::item-content");
+        renderStyleClass(facesContext, renderCtx, "rh|multiSelect::item-content");
         rw.writeAttribute("type", "button", null);
         rw.writeAttribute("tabindex", "-1", null);
         rw.startElement("span", null);
@@ -131,7 +132,7 @@ public class MultiSelectRenderer extends RichRenderer {
         rw.endElement("button");
         rw.startElement("span", null);
         rw.writeAttribute("title", "Remove", null);
-        RichRenderer.renderStyleClass(facesContext, renderCtx, "rh|multiSelect::item-delete");
+        renderStyleClass(facesContext, renderCtx, "rh|multiSelect::item-delete");
         rw.endElement("span");
         rw.endElement("li");
     }
@@ -151,9 +152,8 @@ public class MultiSelectRenderer extends RichRenderer {
 
     /**
      * Provide the name of the client-side javascript object representing this renderer.
-     * <p>
-     * HINT: if you do not have a client-side object, you should not be subclassing RichRenderer! Subclass the
-     * Trinidad CoreRenderer class, or the ordinary JSF Renderer class.
+     * HINT: if you do not have a client-side object, you should not be subclassing RichRenderer!
+     * Subclass the Trinidad CoreRenderer class, or the ordinary JSF Renderer class.
      * @return "RhMultiSelect"
      */
     @Override
@@ -173,27 +173,42 @@ public class MultiSelectRenderer extends RichRenderer {
         super.decodeInternal(context, component, clientId);
         String hiddenInputId = clientId + ":value";
         Map<String, String> request = context.getExternalContext().getRequestParameterMap();
-        if (request.containsKey(hiddenInputId)) {
-            String[] clientKeepStr = request.get(hiddenInputId).replace("[","").replace("]","").split(",");
-            List<Integer> keepIdx = new ArrayList<Integer>(clientKeepStr.length);
-            for (int i=0, n=clientKeepStr.length; i<n; i++) {
-                keepIdx.add(Integer.parseInt(clientKeepStr[i].trim()));
-            }
-            // TODO: shouldn't we queue an event or use some other way to postpone this to Update-Model phase
-            List serverValues = (List) component.getAttributes().get(_value);
-            int idx = 0;
-            for (Iterator iter = serverValues.iterator(); iter.hasNext(); idx++) {
-                iter.next();
-                if (!keepIdx.contains(idx)) {
-                    iter.remove();
-                }
-            }
+        String submittedValue = request.get(hiddenInputId);
+        if (submittedValue != null && component instanceof EditableValueHolder) {
+            EditableValueHolder evh = (EditableValueHolder) component;
+            evh.setSubmittedValue(submittedValue);
         }
         // see if any of our ClientEvents are in the request. If so, queue proper server side FacesEvent
         ClientEvent selectEvent = getClientEvent(context, clientId, "itemSelect");
         if (selectEvent != null) {
             new ItemSelectEvent(component, (String) selectEvent.getParameters().get("item")).queue();
         }
+    }
+
+    @Override
+    public Object getConvertedValue(FacesContext facesContext, UIComponent component,
+                                    Object submittedValue) throws ConverterException {
+        // convert the submitted string from the client to List as understood by model
+        EditableValueHolder evh = (EditableValueHolder) component;
+        List<String> modelValues = new ArrayList<String>((List<String>) evh.getValue());
+        int[] keepIndices = keepIndices((String) submittedValue);
+        List<String> newValues = new ArrayList<String>(keepIndices.length);
+        for (int i : keepIndices) {
+            newValues.add(modelValues.get(i));
+        }
+        return newValues;
+    }
+
+    private int[] keepIndices(String submittedValue) {
+        String[] strIndices = submittedValue.replace("[", "").replace("]", "").split(",");
+        if (strIndices.length == 1 && strIndices[0].trim().isEmpty()) {
+            return new int[0];
+        }
+        int[] retval = new int[strIndices.length];
+        for (int i = 0, n = strIndices.length; i < n; i++) {
+            retval[i] = Integer.parseInt(strIndices[i].trim());
+        }
+        return retval;
     }
 
     /**
@@ -215,4 +230,5 @@ public class MultiSelectRenderer extends RichRenderer {
         // .addRequiredProperty will force instantiation of a client component as they have to be present on the client
         // .addSecureProperty for properties that cannot be changed at the client and should not be synched back to server
     }
+
 }

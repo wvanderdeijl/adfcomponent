@@ -26,11 +26,7 @@ RhMultiSelectPeer.prototype.HandleComponentClick = function(componentEvent) {
       AdfAssert.assertString(selectItem);
       AdfLogger.LOGGER.logMessage(AdfLogger.FINEST, "tag :" + selectItem);
       // fire a select event
-      RhItemSelectEvent.queue(component, selectItem); // TODO: delete and select should probably have different triggers ;-)
-      //cancel the native dom onclick to prevent browser actions based on the
-      //'#' hyperlink. The event is of type AdfIEUIInputEvent. This event
-      //will cancel the native dom event by calling AdfAgent.AGENT.preventDefault(Event)
-      //componentEvent.cancel();
+      RhItemSelectEvent.queue(component, selectItem);
     } else if (target && target.tagName == "SPAN") {
       // clicked the delete icon, queue ItemDeleteEvent that will be handled client side
       // TODO: would be better if we look at styleClass but that can be minified
