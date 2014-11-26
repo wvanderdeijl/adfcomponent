@@ -15,6 +15,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
+import oracle.adf.share.logging.ADFLogger;
 import oracle.adf.view.rich.render.ClientComponent;
 import oracle.adf.view.rich.render.ClientEvent;
 import oracle.adf.view.rich.render.ClientMetadata;
@@ -38,6 +39,7 @@ import org.apache.myfaces.trinidad.context.RenderingContext;
  * the renderer features.
  */
 public class MultiSelectRenderer extends RichRenderer {
+    private static final ADFLogger logger = ADFLogger.createADFLogger(MultiSelectRenderer.class);
 
     private PropertyKey _value;
 
@@ -170,17 +172,21 @@ public class MultiSelectRenderer extends RichRenderer {
      */
     @Override
     public void decodeInternal(FacesContext context, UIComponent component, String clientId) {
+
         super.decodeInternal(context, component, clientId);
         String hiddenInputId = clientId + ":value";
         Map<String, String> request = context.getExternalContext().getRequestParameterMap();
+        logger.fine("hiddenInputId: " + request.get(hiddenInputId));
         if (request.containsKey(hiddenInputId)) {
-            String[] clientKeepStr = request.get(hiddenInputId).replace("[","").replace("]","").split(",");
+            String[] clientKeepStr = request.get(hiddenInputId).replace("[", "").replace("]", "").split(",");
             List<Integer> keepIdx = new ArrayList<Integer>(clientKeepStr.length);
-            for (int i=0, n=clientKeepStr.length; i<n; i++) {
+            for (int i = 0, n = clientKeepStr.length; i < n; i++) {
                 keepIdx.add(Integer.parseInt(clientKeepStr[i].trim()));
             }
+            logger.fine("keepIdx: " + keepIdx);
             // TODO: shouldn't we queue an event or use some other way to postpone this to Update-Model phase
             List serverValues = (List) component.getAttributes().get(_value);
+            logger.fine("serverValues: " + serverValues);
             int idx = 0;
             for (Iterator iter = serverValues.iterator(); iter.hasNext(); idx++) {
                 iter.next();
@@ -192,7 +198,9 @@ public class MultiSelectRenderer extends RichRenderer {
         // see if any of our ClientEvents are in the request. If so, queue proper server side FacesEvent
         ClientEvent selectEvent = getClientEvent(context, clientId, "itemSelect");
         if (selectEvent != null) {
-            new ItemSelectEvent(component, (String) selectEvent.getParameters().get("item")).queue();
+            String item = (String) selectEvent.getParameters().get("item");
+            logger.fine("selectEvent not null, ItemSelectEvent for: " + item);
+            new ItemSelectEvent(component, item).queue();
         }
     }
 
